@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2014 11:57:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="rs.ac.uns.dmi.is2.projekat.dbmodel.Linija" table="LINIJA">
+        
+        <id name="idLinije" type="java.lang.Integer">
+            <column name="IDLINIJE" />
+            <generator class="assigned" />
+        </id>
+        <property name="vremePoletanja" type="java.util.Date">
+        	<column name="VREMEPOLETANJA"></column>
+        </property>
+        <property name="terminal" type="java.lang.String">
+            <column name="TERMINAL" />
+        </property>
+        <property name="duzinaPuta" type="java.lang.Integer">
+            <column name="DUZINAPUTA" />
+        </property>
+        <property name="vremePutovanja" type="java.sql.Time">
+            <column name="VREMEPUTOVANJA" />
+        </property>
+        <many-to-one name="aerodrom" class="rs.ac.uns.dmi.is2.projekat.dbmodel.Aerodrom" fetch="join">
+            <column name="IDAERODROMA" />
+        </many-to-one>
+        <set name="vremenaSletanja" table="VREMESLETANJA" inverse="false" lazy="true">
+            <key>
+                <column name="VREME" />
+            </key>
+            <one-to-many class="rs.ac.uns.dmi.is2.projekat.dbmodel.VremeSletanja" />
+        </set>
+        <set name="letovi" table="LET" inverse="false" lazy="true">
+            <key>
+                <column name="BROJLETA" />
+            </key>
+            <one-to-many class="rs.ac.uns.dmi.is2.projekat.dbmodel.Let" />
+        </set>
+    </class>
+</hibernate-mapping>

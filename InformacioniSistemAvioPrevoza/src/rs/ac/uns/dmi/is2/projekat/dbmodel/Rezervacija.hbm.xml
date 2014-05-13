@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2014 11:57:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="rs.ac.uns.dmi.is2.projekat.dbmodel.Rezervacija" table="REZERVACIJA">
+        <id name="id" type="java.lang.Integer">
+            <column name="IDREZERVACIJE" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="korsnik" class="rs.ac.uns.dmi.is2.projekat.dbmodel.Korisnik" fetch="join">
+            <column name="IDKORSNIKA" />
+        </many-to-one>
+        <many-to-one name="let" class="rs.ac.uns.dmi.is2.projekat.dbmodel.Let" fetch="join">
+            <column name="BROJLETA" />
+        </many-to-one>
+        <property name="datumRezervacije" type="java.util.Date">
+            <column name="DATUMREZERVACIJE" />
+        </property>
+        <property name="brojKarata" type="java.lang.Integer">
+            <column name="BROJKARATA" />
+        </property>
+    </class>
+</hibernate-mapping>
