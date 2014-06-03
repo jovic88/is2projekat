@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2014 11:57:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dbmodel.Linija" table="LINIJA">
+        
+        <id name="idLinije" type="java.lang.Integer">
+            <column name="IDLINIJE" />
+            <generator class="assigned" />
+        </id>
+        <property name="duzinaPuta" type="java.lang.Integer">
+            <column name="DUZINAPUTA" />
+        </property>
+        <many-to-one name="aerodromStart" class="dbmodel.Aerodrom" fetch="join">
+            <column name="IDAERODROMASTART" />
+        </many-to-one>
+         <many-to-one name="aerodromFinish" class="dbmodel.Aerodrom" fetch="join">
+            <column name="IDAERODROMAFINISH" />
+        </many-to-one>
+        <set name="letovi" table="LET" inverse="false" lazy="true">
+            <key>
+                <column name="BROJLETA" />
+            </key>
+            <one-to-many class="dbmodel.Let" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2014 11:57:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dbmodel.Aerodrom" table="AERODROM">
+        <id name="idAerodroma" type="java.lang.Integer">
+            <column name="IDAERODROMA" />
+            <generator class="assigned" />
+        </id>
+        <property name="naziv" type="java.lang.String">
+            <column name="NAZIV" />
+        </property>
+        <property name="grad" type="java.lang.String">
+            <column name="GRAD" />
+        </property>
+        <property name="drzava" type="java.lang.String">
+            <column name="DRZAVA" />
+        </property>
+        <property name="brojPista" type="java.lang.Integer">
+            <column name="BROJPISTA" />
+        </property>
+        <property name="brojTerminala" type="java.lang.Integer">
+            <column name="BROJTERMINALA" />
+        </property>
+        <set name="linije" table="LINIJA" inverse="false" lazy="true">
+            <key>
+                <column name="IDLINIJE" />
+            </key>
+            <one-to-many class="dbmodel.Linija" />
+        </set>
+    </class>
+</hibernate-mapping>

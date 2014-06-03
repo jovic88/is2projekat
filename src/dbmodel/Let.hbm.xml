@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 1, 2014 11:57:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="dbmodel.Let" table="LET">
+        <id name="brojLeta" type="java.lang.String">
+            <column name="BROJLETA" />
+            <generator class="assigned" />
+        </id>
+        <property name="vremePoletanja" type="java.util.Date">
+        	<column name="VREMEPOLETANJA"></column>
+        </property>
+        <property name="vremeSletanja" type="java.util.Date">
+        	<column name="VREMESLETANJA"></column>
+        </property>
+        <property name="terminal" type="java.lang.String">
+            <column name="TERMINAL" />
+        </property>
+        <property name="cenaLeta" type="java.lang.Integer">
+            <column name="CENALETA" />
+        </property>
+        <property name="brojMesta" type="java.lang.Integer">
+            <column name="BROJMESTA" />
+        </property>
+        <property name="tipAviona" type="java.lang.String">
+            <column name="TIPAVIONA" />
+        </property>
+        <property name="brojProdatihKarata" type="java.lang.Integer">
+            <column name="BROJPRODATIHKARATA" />
+        </property>
+        <set name="rezervacije" table="REZERVACIJA" inverse="false" lazy="true">
+            <key>
+                <column name="IDREZERVACIJE" />
+            </key>
+            <one-to-many class="dbmodel.Rezervacija" />
+        </set>
+        <many-to-one name="kompanija" class="dbmodel.Kompanija" fetch="join">
+            <column name="IDKOMPANIJE" />
+        </many-to-one>
+        <many-to-one name="linija" class="dbmodel.Linija" fetch="join">
+            <column name="IDLINIJE" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
